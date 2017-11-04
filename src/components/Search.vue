@@ -1,14 +1,42 @@
 <template>
   <div class="search">
     <div class="container">
-      <input class="search-input"  type="text" placeholder="Search...">
+      <input v-model="searchTerm" class="search-input"  type="text" placeholder="Search...">
+      <div class="results" v-if="movies.length > 0">
+        <div v-for="movie in movies">
+          <router-link :to="{ name: 'Movie', params: { id: movie.id }}">{{ movie.title }}</router-link>
+        </div>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'Search',
+  data() {
+    return {
+      searchTerm: '',
+      movies: [],
+    };
+  },
+  watch: {
+    searchTerm(val) {
+      if (val) {
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c9552a072186ffa3f695406bd29869b4&query=${val}`)
+          .then((response) => {
+            this.movies = response.data.results;
+          })
+          .catch(() => {
+          });
+      } else {
+        this.movies = [];
+      }
+    },
+  },
 };
 </script>
 
@@ -30,11 +58,20 @@ export default {
     outline: none;
     font-family: Arial, sans-serif;
     font-style: italic;
-    font-weight: light;
     font-size: 1.2em;
     color: #acacac;
     box-sizing: border-box;
     text-indent: 0;
+  }
+
+  .results{
+    background-color: #FFF;
+    z-index: 999;
+    position: relative;
+  }
+
+  .results a{
+    color: #000;
   }
 
 </style>

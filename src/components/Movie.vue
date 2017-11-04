@@ -7,8 +7,10 @@
       <div class="movie-info">
         <h1>{{ movie.original_title }} <span class="movie-release">({{ movie.release_date | yearonly }})</span></h1>
         <div>
-          <h4>Overview</h4>
-          {{ movie.overview }}
+          <h4 class="movie-overview-label">Overview</h4>
+          <p class="movie-overview">
+            {{ movie.overview }}
+          </p>
         </div>
       </div>
     </div>
@@ -18,23 +20,18 @@
 <script>
 import axios from 'axios';
 
-const ColorThief = require('color-thief-browser');
-
 export default {
   name: 'Movie',
   data() {
     return {
       movie: {},
-      backgroundImage: '',
+      background_color: '',
     };
   },
   created() {
     axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=c9552a072186ffa3f695406bd29869b4`)
       .then((response) => {
         this.movie = response.data;
-        const image = `http://image.tmdb.org/t/p/w300${this.movie.poster_path}`;
-        const color = ColorThief.getColor(image);
-        alert(color);
       })
       .catch(() => {
       });
@@ -74,5 +71,14 @@ export default {
     grid-template-columns: 30% 70%;
     position: relative;
     z-index: 5;
+  }
+  .movie-overview-label{
+    margin-bottom: 5px;
+    font-size: 1.4em;
+  }
+  .movie-overview{
+    font-size: 1em;
+    line-height: 1.4em;
+    margin: 0;
   }
 </style>
