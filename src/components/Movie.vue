@@ -29,12 +29,17 @@ export default {
     };
   },
   created() {
-    axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=c9552a072186ffa3f695406bd29869b4`)
-      .then((response) => {
-        this.movie = response.data;
-      })
-      .catch(() => {
-      });
+    this.fetchData();
+  },
+  methods: {
+    fetchData() {
+      axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=c9552a072186ffa3f695406bd29869b4`)
+        .then((response) => {
+          this.movie = response.data;
+        })
+        .catch(() => {
+        });
+    },
   },
   filters: {
     yearonly: (value) => {
@@ -44,6 +49,9 @@ export default {
     },
     poster: value => `http://image.tmdb.org/t/p/w300${value}`,
     background: value => `http://image.tmdb.org/t/p/w1400_and_h450_bestv2${value}`,
+  },
+  watch: {
+    $route: 'fetchData',
   },
 };
 </script>

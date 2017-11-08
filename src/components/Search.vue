@@ -1,10 +1,10 @@
 <template>
   <div class="search">
     <div class="container">
-      <input v-model="searchTerm" class="search-input"  type="text" placeholder="Search...">
+      <input v-model="searchTerm" @focus="show_result = true" class="search-input"  type="text" placeholder="Search...">
       <div class="results" v-if="movies.length > 0">
-        <div v-for="movie in movies">
-          <router-link :to="{ name: 'Movie', params: { id: movie.id }}">{{ movie.title }}</router-link>
+        <div v-for="movie in movies" v-if="show_result">
+          <router-link v-on:click.native="resultClick" :to="{ name: 'Movie', params: { id: movie.id }}">{{ movie.title }}</router-link>
         </div>
       </div>
     </div>
@@ -21,7 +21,14 @@ export default {
     return {
       searchTerm: '',
       movies: [],
+      show_result: false,
     };
+  },
+  methods: {
+    resultClick() {
+      this.show_result = false;
+      this.searchTerm = '';
+    },
   },
   watch: {
     searchTerm(val) {
