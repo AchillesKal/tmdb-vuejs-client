@@ -14,7 +14,7 @@
         <i class="fa fa-calendar" aria-hidden="true"></i> {{ movie.release_date | yearonly}}
       </div>
       <div class="most-popular-movie-info-overview">
-        {{ movie.overview }}
+        {{ movie.overview | truncate(200) }}
       </div>
       <div class="most-popular-movie-info-more">
         <router-link :to="{ name: 'Movie', params: { id: movie.id }}">More info</router-link>
@@ -34,6 +34,7 @@ export default {
       return value.substring(0, 4);
     },
     poster: value => `http://image.tmdb.org/t/p/w185${value}`,
+    truncate: (string, value) => `${string.substring(0, value)}...`,
   },
 };
 </script>
@@ -41,9 +42,6 @@ export default {
 <style scoped>
   a{
     color: #000;
-  }
-  .most-popular{
-
   }
   .movie-card{
     display: grid;

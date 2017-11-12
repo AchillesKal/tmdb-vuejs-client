@@ -1,7 +1,7 @@
 <template>
   <div class="search">
     <div class="container">
-      <input v-model="searchTerm" @keyup.enter="submitSearch" @focus="show_result = true" @blur="show_result = true" class="search-input" type="text" placeholder="Search...">
+      <input v-model="searchTerm" @keyup.enter="submitSearch" @keyup="show_result = true" @blur="searchBlur" class="search-input" type="text" placeholder="Search...">
       <div class="results" v-if="movies.length > 0 && show_result == true">
         <search-result v-on:click.native="resultClick" v-for="movie in movies" :movie="movie" ></search-result>
       </div>
@@ -33,6 +33,13 @@ export default {
     submitSearch() {
       this.$router.push({ name: 'Movie', params: { id: this.movies[0].id } });
       this.searchTerm = '';
+    },
+    searchBlur(event) {
+      if (event.relatedTarget && event.relatedTarget.className === 'search-result-link') {
+        return false;
+      }
+      this.show_result = false;
+      return true;
     },
   },
   watch: {

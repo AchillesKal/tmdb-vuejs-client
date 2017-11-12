@@ -1,6 +1,6 @@
 <template>
     <div class="single-result">
-        <router-link :to="{ name: 'Movie', params: { id: movie.id }}">{{ movie.title }}</router-link>
+        <router-link class="search-result-link" :to="{ name: 'Movie', params: { id: movie.id }}">{{ movie.title }}</router-link>
     </div>
 </template>
 
