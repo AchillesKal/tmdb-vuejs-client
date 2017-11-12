@@ -47,7 +47,7 @@ export default {
       if (val) {
         axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c9552a072186ffa3f695406bd29869b4&query=${val}`)
           .then((response) => {
-            this.movies = response.data.results;
+            this.movies = response.data.results.slice(0, 10);
           })
           .catch(() => {
           });
