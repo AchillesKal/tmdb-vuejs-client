@@ -28,6 +28,9 @@ a{
 .search-result-link{
     display: flex;
     padding: 5px;
+    font-weight: bold;
+    line-height: 29px;
+    height: 30px;
 }
 .search-result-link:hover{
     background-color: #ECF0F7;

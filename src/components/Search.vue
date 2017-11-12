@@ -72,10 +72,13 @@ export default {
   }
   .search-wrap{
     display: flex;
-    color: #555;
   }
   .search-icon{
     line-height: 45px;
+    color: #BBB;
+  }
+  .search-wrap:hover .search-icon{
+    color: #444;
   }
   .search-input{
     width: 100%;
