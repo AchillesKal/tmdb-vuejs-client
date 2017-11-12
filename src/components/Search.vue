@@ -1,7 +1,10 @@
 <template>
   <div class="search">
     <div class="container">
-      <input v-model="searchTerm" @keyup.enter="submitSearch" @keyup="show_result = true" @blur="searchBlur" class="search-input" type="text" placeholder="Search...">
+      <div class="search-wrap">
+        <i class="fa fa-search search-icon" aria-hidden="true"></i>
+        <input v-model="searchTerm" @keyup.enter="submitSearch" @keyup="show_result = true" @blur="searchBlur" class="search-input" type="text" placeholder="Search...">
+      </div>
       <div class="results" v-if="movies.length > 0 && show_result == true">
         <search-result v-on:click.native="resultClick" v-for="movie in movies" :movie="movie" ></search-result>
       </div>
@@ -67,11 +70,18 @@ export default {
     border-bottom: 1px solid #dedede;
     box-sizing: border-box;
   }
+  .search-wrap{
+    display: flex;
+    color: #555;
+  }
+  .search-icon{
+    line-height: 45px;
+  }
   .search-input{
     width: 100%;
     border: none;
     border-radius: 0;
-    padding: 0 30px;
+    padding: 0 10px;
     height: 45px;
     line-height: 45px;
     outline: none;
