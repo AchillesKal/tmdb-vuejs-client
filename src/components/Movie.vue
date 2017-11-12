@@ -1,5 +1,5 @@
 <template>
-  <div class="movie" v-bind:style="{ 'background-image': 'url(http://image.tmdb.org/t/p/w1400_and_h450_bestv2/' + movie.backdrop_path + ')' }">
+  <div v-if="!loading" class="movie" v-bind:style="{ 'background-image': 'url(http://image.tmdb.org/t/p/w1400_and_h450_bestv2/' + movie.backdrop_path + ')' }">
     <div class="container movie-inner">
       <div class="movie-image">
         <img :src="movie.poster_path | poster" >
@@ -33,9 +33,15 @@ export default {
   },
   methods: {
     fetchData() {
+      this.$store.commit({
+        type: 'onLoad',
+      });
       axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=c9552a072186ffa3f695406bd29869b4`)
         .then((response) => {
           this.movie = response.data;
+          this.$store.commit({
+            type: 'unload',
+          });
         })
         .catch(() => {
         });
@@ -52,6 +58,11 @@ export default {
   },
   watch: {
     $route: 'fetchData',
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    },
   },
 };
 </script>

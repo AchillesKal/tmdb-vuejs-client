@@ -1,11 +1,9 @@
 <template>
   <div class="search">
     <div class="container">
-      <input v-model="searchTerm" @focus="show_result = true" class="search-input"  type="text" placeholder="Search...">
-      <div class="results" v-if="movies.length > 0">
-        <div v-for="movie in movies" v-if="show_result">
-          <router-link v-on:click.native="resultClick" :to="{ name: 'Movie', params: { id: movie.id }}">{{ movie.title }}</router-link>
-        </div>
+      <input v-model="searchTerm" @keyup.enter="submitSearch" @focus="show_result = true" @blur="show_result = true" class="search-input" type="text" placeholder="Search...">
+      <div class="results" v-if="movies.length > 0 && show_result == true">
+        <search-result v-on:click.native="resultClick" v-for="movie in movies" :movie="movie" ></search-result>
       </div>
     </div>
   </div>
@@ -14,9 +12,13 @@
 
 <script>
 import axios from 'axios';
+import searchResult from './SearchResult';
 
 export default {
   name: 'Search',
+  components: {
+    searchResult,
+  },
   data() {
     return {
       searchTerm: '',
@@ -26,7 +28,10 @@ export default {
   },
   methods: {
     resultClick() {
-      this.show_result = false;
+      this.searchTerm = '';
+    },
+    submitSearch() {
+      this.$router.push({ name: 'Movie', params: { id: this.movies[0].id } });
       this.searchTerm = '';
     },
   },

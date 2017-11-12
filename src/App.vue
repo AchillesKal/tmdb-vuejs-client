@@ -3,19 +3,36 @@
     <top-header></top-header>
     <search></search>
     <router-view/>
+    <div class="spinner-wrap">
+      <bounce-loader class="spinner" :loading="loading" :color="color" :size="size"></bounce-loader>
+    </div>
   </div>
 </template>
 
 <script>
+import BounceLoader from 'vue-spinner/src/BounceLoader';
 import 'normalize.css';
 import TopHeader from './components/TopHeader';
 import Search from './components/Search';
+
 
 export default {
   name: 'app',
   components: {
     TopHeader,
     Search,
+    BounceLoader,
+  },
+  data() {
+    return {
+      color: 'black',
+      size: '150px',
+    };
+  },
+  computed: {
+    loading() {
+      return this.$store.state.loading;
+    },
   },
 };
 </script>
@@ -36,5 +53,11 @@ export default {
   a{
     color: #FFF;
     text-decoration: none;
+  }
+  .spinner-wrap{
+    text-align: center;
+  }
+  .spinner{
+    display: inline-block;
   }
 </style>
