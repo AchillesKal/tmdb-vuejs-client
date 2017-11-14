@@ -6,7 +6,7 @@
         <input v-model="searchTerm" @keyup.enter="submitSearch" @keyup="show_result = true" @blur="searchBlur" class="search-input" type="text" placeholder="Search...">
       </div>
       <div class="results" v-if="movies.length > 0 && show_result == true">
-        <search-result v-on:click.native="resultClick" v-for="movie in movies" :movie="movie" ></search-result>
+        <search-result v-on:click.native="resultClick" v-for="movie in movies" :movie="movie" :key="movie.id"></search-result>
       </div>
     </div>
   </div>
