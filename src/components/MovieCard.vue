@@ -1,7 +1,8 @@
 <template>
   <div class="movie-card">
     <div class="most-popular-movie-image">
-      <img :src="movie.poster_path | poster" >
+      <img v-if="movie.poster_path" :src="movie.poster_path | poster" >
+      <img src="../assets/no-img-card.png" v-else alt="">
     </div>
     <div class="most-popular-movie-info">
       <div class="most-popular-movie-info-top">

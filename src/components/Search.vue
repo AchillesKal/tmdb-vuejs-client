@@ -95,13 +95,15 @@ export default {
     box-sizing: border-box;
     text-indent: 0;
   }
-
   .results{
     background-color: #FFF;
     z-index: 999;
     position: relative;
+    border: 1px solid #ccc;
+    border-color: rgba(0, 0, 0, .15);
+    border-radius: 2px;
+    box-shadow: 0 4px 6px 2px rgba(0, 0, 0, .10);
   }
-
   .results a{
     color: #000;
   }

@@ -2,7 +2,8 @@
   <div v-if="!loading" class="movie" v-bind:style="{ 'background-image': 'url(http://image.tmdb.org/t/p/w1400_and_h450_bestv2/' + movie.backdrop_path + ')' }">
     <div class="container movie-inner">
       <div class="movie-image">
-        <img :src="movie.poster_path | poster" >
+        <img v-if="movie.poster_path" :src="movie.poster_path | poster" >
+        <img src="../assets/no-image-movie.png" v-else alt="">
       </div>
       <div class="movie-info">
         <h1>{{ movie.original_title }} <span class="movie-release">({{ movie.release_date | yearonly }})</span></h1>

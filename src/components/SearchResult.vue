@@ -2,7 +2,8 @@
     <div class="single-result">
         <router-link class="search-result-link" :to="{ name: 'Movie', params: { id: movie.id }}">
             <div class="search-result-image">
-                <img :src="movie.poster_path | poster" >
+                <img v-if="movie.poster_path" :src="movie.poster_path | poster" >
+                <img src="../assets/no-img-search.png" v-else alt="">
             </div>
             <div class="search-result-body">
                 {{ movie.title }}
