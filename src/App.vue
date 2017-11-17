@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <top-header></top-header>
-    <search></search>
-    <router-view/>
-    <div class="spinner-wrap">
-      <bounce-loader class="spinner" :loading="loading" :color="color" :size="size"></bounce-loader>
-    </div>
+    <main class="main-body">
+      <router-view/>
+      <div class="spinner-wrap">
+        <bounce-loader class="spinner" :loading="loading" :color="color" :size="size"></bounce-loader>
+      </div>
+    </main>
   </div>
 </template>
 
@@ -13,14 +14,11 @@
 import BounceLoader from 'vue-spinner/src/BounceLoader';
 import 'normalize.css';
 import TopHeader from './components/TopHeader';
-import Search from './components/Search';
-
 
 export default {
   name: 'app',
   components: {
     TopHeader,
-    Search,
     BounceLoader,
   },
   data() {
@@ -59,5 +57,8 @@ export default {
   }
   .spinner{
     display: inline-block;
+  }
+  .main-body{
+    padding-top: 167px;
   }
 </style>
