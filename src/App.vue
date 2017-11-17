@@ -39,7 +39,7 @@ export default {
 
 <style lang="scss">
   body{
-    background-color: #4E566B;
+    background-color: #F4F4F4;
     margin: 0;
     font-family: 'Source Sans Pro', sans-serif;
   }
