@@ -74,6 +74,12 @@ export default {
   .small{
     height: 60px;
   }
+
+  .small .logo{
+    height: 50px;
+    transition: height 0.25s ease-in;
+    margin-top: 5px;
+  }
   .header a{
     color: #fff;
     font-weight: 600;
