@@ -7,6 +7,7 @@
         <bounce-loader class="spinner" :loading="loading" :color="color" :size="size"></bounce-loader>
       </div>
     </main>
+    <modal v-if="modal" @close="modal = false"></modal>
   </div>
 </template>
 
@@ -14,17 +15,20 @@
 import BounceLoader from 'vue-spinner/src/BounceLoader';
 import 'normalize.css';
 import TopHeader from './components/TopHeader';
+import Modal from './components/Modal';
 
 export default {
   name: 'app',
   components: {
     TopHeader,
     BounceLoader,
+    Modal,
   },
   data() {
     return {
       color: 'black',
       size: '150px',
+      modal: true,
     };
   },
   computed: {
