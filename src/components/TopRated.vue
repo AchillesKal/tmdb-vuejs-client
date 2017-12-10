@@ -38,7 +38,6 @@ export default {
     addMovies(page = 1) {
       axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=c9552a072186ffa3f695406bd29869b4&sort_by=vote_average.desc&page=${page}`)
         .then((response) => {
-          console.log(response.data.results);
           this.movies.push(...response.data.results);
 
           this.$store.commit({

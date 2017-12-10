@@ -2,11 +2,17 @@
   <header class="header">
     <div class="container">
       <div v-bind:class="{ small: scroll }" class="header-inner">
-        <div class="menu">
-          <router-link to="/"><img class="logo" src="../assets/logo.svg" alt=""></router-link>
+        <div class="header-logo">
+          <router-link to="/">
+            <div><span class="red">Super</span> <span>Awesome</span></div>
+            <div><span>Movie</span> <span class="red">Client</span></div>
+          </router-link>
+        </div>
+        <div class="header-menu">
+          <router-link to="/">Home</router-link>
           <router-link to="/">Movies</router-link>
-          <router-link to="/about">About</router-link>
           <router-link to="/top">Top Rated</router-link>
+          <router-link to="/about">About</router-link>
         </div>
       </div>
     </div>
@@ -51,7 +57,7 @@ export default {
     position: fixed;
     top: 0;
     left: 0;
-    background-color: #081c24;
+    background-color: #24292E;
     width: 100%;
     z-index: 999;
   }
@@ -70,15 +76,22 @@ export default {
     align-items: center;
     will-change: height;
     transition: height 0.25s ease-in;
+    justify-content: space-between;
   }
+
+  .header-logo{
+    font-size: 26px;
+    text-align: center;
+    transition: all 0.25s;
+  }
+
   .small{
     height: 60px;
   }
 
-  .small .logo{
-    height: 50px;
-    transition: height 0.25s ease-in;
-    margin-top: 5px;
+  .small .header-logo{
+    font-size: 20px;
+    transition: all 0.25s;
   }
   .header a{
     color: #fff;
@@ -86,7 +99,6 @@ export default {
     text-transform: uppercase;
     margin-right: 30px;
     height: 70px;
-    line-height: 70px;
   }
 
   .logo{
@@ -96,5 +108,9 @@ export default {
 
   .menu{
     display: inline-flex;
+  }
+
+  .red{
+    color: #ff6670;
   }
 </style>

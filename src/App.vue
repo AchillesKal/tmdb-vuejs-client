@@ -28,7 +28,7 @@ export default {
     return {
       color: 'black',
       size: '150px',
-      modal: true,
+      modal: false,
     };
   },
   computed: {
