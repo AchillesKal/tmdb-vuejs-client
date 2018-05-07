@@ -29,7 +29,7 @@ export default {
     this.$store.commit({
       type: 'onLoad',
     });
-    axios.get('https://api.themoviedb.org/3/discover/movie?api_key=c9552a072186ffa3f695406bd29869b4&sort_by=popularity.desc')
+    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_DB_API_KEY}&sort_by=popularity.desc`)
       .then((response) => {
         this.movies = response.data;
 

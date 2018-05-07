@@ -37,7 +37,7 @@ export default {
       this.$store.commit({
         type: 'onLoad',
       });
-      axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=c9552a072186ffa3f695406bd29869b4`)
+      axios.get(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=${process.env.MOVIE_DB_API_KEY}`)
         .then((response) => {
           this.movie = response.data;
           this.$store.commit({

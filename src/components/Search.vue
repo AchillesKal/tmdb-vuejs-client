@@ -48,7 +48,7 @@ export default {
   watch: {
     searchTerm(val) {
       if (val) {
-        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=c9552a072186ffa3f695406bd29869b4&query=${val}`)
+        axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.MOVIE_DB_API_KEY}&query=${val}`)
           .then((response) => {
             this.movies = response.data.results.slice(0, 10);
           })

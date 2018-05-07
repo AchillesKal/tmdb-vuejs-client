@@ -36,7 +36,7 @@ export default {
       return bottomOfPage || pageHeight < visible;
     },
     addMovies(page = 1) {
-      axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=c9552a072186ffa3f695406bd29869b4&sort_by=vote_average.desc&page=${page}`)
+      axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${process.env.MOVIE_DB_API_KEY}&sort_by=vote_average.desc&page=${page}`)
         .then((response) => {
           this.movies.push(...response.data.results);
 
@@ -76,4 +76,3 @@ export default {
     grid-template-columns: 50% 50%;
   }
 </style>
-
