@@ -71,8 +71,14 @@ export default {
 </script>
 
 <style scoped>
-  .top-rated-movies{
+ .top-rated-movies{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
+  }
+
+  @media (min-width: 970px) {
+    .top-rated-movies{
+      grid-template-columns: 50% 50%;
+    }
   }
 </style>
