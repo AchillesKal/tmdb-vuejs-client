@@ -8,6 +8,9 @@
             <div><span>Movie</span> <span class="red">Client</span></div>
           </router-link>
         </div>
+        <button id="hamburger" class="hamburger hamburger-cancel">
+          <span class="icon"></span>
+        </button>
         <div class="header-menu">
           <router-link to="/">Home</router-link>
           <router-link to="/top">Top Rated</router-link>
