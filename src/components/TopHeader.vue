@@ -148,5 +148,9 @@ export default {
     .header-menu{
       display: block;
     }
+
+    .hamburger{
+      display: none;
+    }
   }
 </style>
