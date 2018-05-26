@@ -10,7 +10,6 @@
         </div>
         <div class="header-menu">
           <router-link to="/">Home</router-link>
-          <router-link to="/">Movies</router-link>
           <router-link to="/top">Top Rated</router-link>
           <router-link to="/about">About</router-link>
         </div>
