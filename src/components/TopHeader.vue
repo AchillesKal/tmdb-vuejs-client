@@ -84,6 +84,10 @@ export default {
     transition: all 0.25s;
   }
 
+  .header-menu{
+    display: none;
+  }
+
   .small{
     height: 60px;
   }
@@ -114,6 +118,8 @@ export default {
   }
 
   @media (min-width: 670px) {
-
+    .header-menu{
+      display: block;
+    }
   }
 </style>
