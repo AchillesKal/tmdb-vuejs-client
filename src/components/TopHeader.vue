@@ -52,6 +52,8 @@ export default {
 </script>
 
 <style scoped>
+
+
   .header{
     position: fixed;
     top: 0;
@@ -111,5 +113,9 @@ export default {
 
   .red{
     color: #ff6670;
+  }
+
+  @media (min-width: 670px) {
+
   }
 </style>
