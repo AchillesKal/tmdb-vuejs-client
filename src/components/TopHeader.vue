@@ -120,6 +120,30 @@ export default {
     color: #ff6670;
   }
 
+  .hamburger {
+    font-size: 35px;
+    width: 1em;
+    padding: 0;
+    cursor: pointer;
+    transition: transform .2s ease-in-out;
+    border: 0 none;
+    background: transparent;
+  }
+
+  .hamburger:before, .hamburger:after {
+    content: "";
+  }
+
+  .hamburger:before, .hamburger .icon, .hamburger:after {
+    display: block;
+    width: 100%;
+    height: .2em;
+    margin: 0 0 .2em;
+    transition: transform .2s ease-in-out;
+    border-radius: .05em;
+    background: #FFF;
+  }
+
   @media (min-width: 670px) {
     .header-menu{
       display: block;
