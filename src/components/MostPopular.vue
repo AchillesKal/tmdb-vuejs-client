@@ -46,6 +46,14 @@ export default {
 <style scoped>
   .most-popular-movies{
     display: grid;
-    grid-template-columns: 50% 50%;
+    grid-template-columns: 100%;
   }
+
+  @media (min-width: 970px) {
+    .most-popular-movies{
+      grid-template-columns: 50% 50%;
+    }
+  }
+
+
 </style>
