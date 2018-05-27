@@ -8,7 +8,7 @@
             <div><span>Movie</span> <span class="red">Client</span></div>
           </router-link>
         </div>
-        <button id="hamburger" class="hamburger hamburger-cancel">
+        <button v-on:click="toggle" id="hamburger" class="hamburger hamburger-cancel">
           <span class="icon"></span>
         </button>
         <div class="header-menu">
@@ -43,6 +43,9 @@ export default {
       } else {
         this.scroll = false;
       }
+    },
+    toggle() {
+
     },
   },
   created() {
