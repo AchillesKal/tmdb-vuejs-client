@@ -11,7 +11,7 @@
         <button v-on:click="toggle" id="hamburger" class="hamburger hamburger-cancel">
           <span class="icon"></span>
         </button>
-        <div class="header-menu">
+        <div v-bind:class="{ active: isActive }" class="header-menu">
           <router-link to="/">Home</router-link>
           <router-link to="/top">Top Rated</router-link>
           <router-link to="/about">About</router-link>
@@ -33,6 +33,7 @@ export default {
   data() {
     return {
       scroll: false,
+      isActive: false,
     };
   },
   methods: {
@@ -45,7 +46,7 @@ export default {
       }
     },
     toggle() {
-
+      this.isActive = !this.isActive;
     },
   },
   created() {
@@ -145,6 +146,24 @@ export default {
     transition: transform .2s ease-in-out;
     border-radius: .05em;
     background: #FFF;
+  }
+
+  .active{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #383535;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+  }
+
+  .active a{
+    line-height: 45px;
+    height: 45px;
   }
 
   @media (min-width: 670px) {
