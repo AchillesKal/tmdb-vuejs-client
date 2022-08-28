@@ -1,5 +1,5 @@
 {
-  "name": "tmdb-fuejs-client",
+  "name": "tmdb-vuejs-client",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
