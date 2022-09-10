@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="home-banner bg-sky-900">
+  <div class="most-popular">
     <div class="container mx-auto">
       <div class="title">
       <h2>What Is Popular</h2>
