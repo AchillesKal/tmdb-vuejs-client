@@ -1,8 +1,12 @@
 <script setup lang="ts">
-
 import { ref, onMounted } from 'vue'
 
-const movies = ref([])
+interface Movie {
+  original_title: string;
+  poster_path: string;
+}
+
+const movies = ref<Movie[]>([])
 
 const apiPath = `https://api.themoviedb.org/3/discover/movie?api_key=${import.meta.env.VITE_APP_TMDB_API_KEY}&sort_by=popularity.desc`
 
