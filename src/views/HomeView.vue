@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import HomeBanner from "../components/HomeBanner.vue";
+import MostPopular from "../components/MostPopular.vue";
 
 const url = import.meta.env.VITE_APP_BASE_URL;
 </script>
@@ -8,4 +9,5 @@ const url = import.meta.env.VITE_APP_BASE_URL;
   <main>
     <HomeBanner />
   </main>
+  <MostPopular />
 </template>
