@@ -28,11 +28,11 @@ onMounted(() => {
     <div class="container mx-auto">
       <div class="title">
       <h2>What Is Popular</h2>
-      <div>
-        <li v-for="(movie, index) in movies" :key="index">
+      <div class="w-full flex gap-10 overflow-x-auto py-14">
+        <div class="shrink-0" v-for="(movie, index) in movies" :key="index">
           {{ movie.original_title }}
           <img :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`" />
-        </li>
+        </div>
       </div>
     </div>
     <MovieSearchForm />
