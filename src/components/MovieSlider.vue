@@ -1,28 +1,16 @@
 <script setup lang="ts">
-import { onMounted, computed } from "vue";
-
-import { useMovieStore } from "../stores/movies";
-
-const store = useMovieStore();
-
-const movies = computed(() => {
-  return store.movies;
-});
-
-onMounted(() => {
-  store.fetchMovies();
-});
+defineProps(['movieItems', 'title'])
 </script>
 
 <template>
-  <div class="most-popular">
+  <div class="movie-slider">
     <div class="container mx-auto">
       <div class="title">
-        <h2>What Is Popular</h2>
+        <h2>What Is {{title}}</h2>
         <div class="w-full flex gap-10 overflow-x-auto py-14">
           <div
             class="shrink-0 first:pl-6 last:pr-6"
-            v-for="(movie, index) in movies"
+            v-for="(movie, index) in movieItems"
             :key="index"
           >
             {{ movie.original_title }}

@@ -5,14 +5,16 @@ import type { Movie } from "../models/Movie"
 export const useMovieStore = defineStore({
   id: "movies",
   state: () => ({
-    movies: [] as Movie[],
+    mostPopularMovies: [] as Movie[],
+    topRatedMovies: [] as Movie[],
   }),
   getters: {
-    getMovies: (state) => state.movies,
+    getMostPopularMovies: (state) => state.mostPopularMovies,
+    getTopRatedMovies: (state) => state.topRatedMovies,
   },
   actions: {
-    async fetchMovies() {
-      const apiPath = `https://api.themoviedb.org/3/discover/movie?api_key=${
+    async fetchMostPopularMovies() {
+      const apiPath = `https://api.themoviedb.org/3/movie/popular?api_key=${
         import.meta.env.VITE_APP_TMDB_API_KEY
       }&sort_by=popularity.desc`;
 
@@ -20,7 +22,22 @@ export const useMovieStore = defineStore({
         const response: Response = await fetch(apiPath);
         const data = await response.json();
 
-        this.movies = data.results;
+        this.mostPopularMovies = data.results;
+      } catch (error) {
+        alert(error);
+        console.log(error);
+      }
+    },
+    async fetchTopRatedMovies() {
+      const apiPath = `https://api.themoviedb.org/3/movie/top_rated?api_key=${
+        import.meta.env.VITE_APP_TMDB_API_KEY
+      }&sort_by=popularity.desc`;
+
+      try {
+        const response: Response = await fetch(apiPath);
+        const data = await response.json();
+
+        this.topRatedMovies = data.results;
       } catch (error) {
         alert(error);
         console.log(error);
