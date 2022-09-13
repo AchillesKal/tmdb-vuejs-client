@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { ref, onMounted, computed } from "vue";
+import { onMounted, computed } from "vue";
 
 import { useMovieStore } from "../stores/movies";
-
-interface Movie {
-  original_title: string;
-  poster_path: string;
-}
 
 const store = useMovieStore();
 

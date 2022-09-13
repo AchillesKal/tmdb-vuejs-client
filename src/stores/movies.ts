@@ -1,9 +1,11 @@
 import { defineStore } from "pinia";
 
+import type { Movie } from "../models/Movie"
+
 export const useMovieStore = defineStore({
   id: "movies",
   state: () => ({
-    movies: [],
+    movies: [] as Movie[],
   }),
   getters: {
     getMovies: (state) => state.movies,
@@ -16,7 +18,6 @@ export const useMovieStore = defineStore({
 
       try {
         const response: Response = await fetch(apiPath);
-        console.log(response)
         const data = await response.json();
 
         this.movies = data.results;
