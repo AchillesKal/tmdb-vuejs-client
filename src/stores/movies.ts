@@ -15,8 +15,11 @@ export const useMovieStore = defineStore({
       }&sort_by=popularity.desc`;
 
       try {
-        const data: any = await fetch(apiPath);
-        this.movies = data.data;
+        const response: Response = await fetch(apiPath);
+        console.log(response)
+        const data = await response.json();
+
+        this.movies = data.results;
       } catch (error) {
         alert(error);
         console.log(error);
