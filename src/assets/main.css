@@ -1,1 +1,9 @@
 @import "./base.css";
+
+.vh-90 {
+    height: 90vh;
+}
+
+.dark-blue {
+    background-color: #032541;
+}

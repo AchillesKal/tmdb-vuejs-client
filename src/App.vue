@@ -3,12 +3,14 @@ import { RouterLink, RouterView } from "vue-router";
 </script>
 
 <template>
-  <header class="bg-sky-900">
+  <header class="dark-blue">
     <div class="container mx-auto">
-      <nav class="flex items-center justify-between flex-wrap p-6 ">
+      <nav class="flex items-center justify-between flex-wrap p-6">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <RouterLink to="/">
-            <span class="font-semibold text-xl tracking-tight">TMDB VueJS Client</span>
+            <span class="font-semibold text-xl tracking-tight"
+              >TMDB VueJS Client</span
+            >
           </RouterLink>
         </div>
         <div class="block lg:hidden">
@@ -25,7 +27,9 @@ import { RouterLink, RouterView } from "vue-router";
             </svg>
           </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+        <div
+          class="w-full block flex-grow lg:flex lg:items-center lg:w-auto font-semibold text-white text-base"
+        >
           <div>
             <RouterLink to="/" class="mr-4">Home</RouterLink>
             <RouterLink to="/about" class="mr-4">About</RouterLink>
@@ -34,7 +38,18 @@ import { RouterLink, RouterView } from "vue-router";
       </nav>
     </div>
   </header>
-  <main>
+  <main class="vh-90">
     <RouterView />
   </main>
+  <footer class="text-center lg:text-left bg-gray-100 text-gray-600">
+    <div class="text-center p-6 bg-gray-200">
+      <span>This Project Uses the </span>
+      <a
+        class="text-gray-600 font-semibold"
+        href="https://www.themoviedb.org/"
+        target="_blank"
+        >TMDB API</a
+      >
+    </div>
+  </footer>
 </template>
