@@ -28,10 +28,12 @@ import { RouterLink, RouterView } from "vue-router";
           </button>
         </div>
         <div
-          class="w-full block flex-grow lg:flex lg:items-center lg:w-auto font-semibold text-white text-base"
+          class="w-full block lg:flex lg:items-center lg:w-auto font-semibold text-white text-base"
         >
           <div>
             <RouterLink to="/" class="mr-4">Home</RouterLink>
+            <RouterLink to="/about" class="mr-4">Movies</RouterLink>
+            <RouterLink to="/about" class="mr-4">TV Shows</RouterLink>
             <RouterLink to="/about" class="mr-4">About</RouterLink>
           </div>
         </div>
