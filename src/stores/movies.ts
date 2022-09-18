@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 
-import type { Movie } from "../models/Movie"
+import type { Movie } from "../models/Movie";
 
 export const useMovieStore = defineStore({
   id: "movies",

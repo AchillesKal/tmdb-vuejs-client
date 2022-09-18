@@ -1,9 +1,18 @@
 @import "./base.css";
 
 .vh-90 {
-    height: 90vh;
+    min-height: 90vh;
 }
 
 .dark-blue {
     background-color: #032541;
+}
+
+.home-banner {
+    min-height: 350px;
+    max-height: 360px;
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
 }

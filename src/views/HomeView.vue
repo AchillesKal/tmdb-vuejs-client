@@ -23,7 +23,7 @@ onMounted(() => {
 
 <template>
   <main>
-    <HomeBanner />
+    <HomeBanner :movieItems="mostPopularMovies" />
   </main>
   <MovieSlider :movieItems="mostPopularMovies" title="Popular" />
 
