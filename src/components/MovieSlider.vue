@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  
 defineProps(["movieItems", "title"]);
 </script>
 
@@ -22,7 +23,7 @@ defineProps(["movieItems", "title"]);
             <div class="font-bold break-words">
               {{ movie.original_title }}
             </div>
-            <div class="release-date">
+            <div class="release-date text-gray-400 text-sm">
               {{ movie.release_date }}
             </div>
           </div>
