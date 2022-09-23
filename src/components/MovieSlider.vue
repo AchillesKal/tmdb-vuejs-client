@@ -14,18 +14,20 @@ defineProps(["movieItems", "title"]);
             v-for="(movie, index) in movieItems"
             :key="index"
           >
-            <div>
-              <img
-                class="slider-image rounded-md"
-                :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`"
-              />
-            </div>
-            <div class="font-bold break-words">
-              {{ movie.original_title }}
-            </div>
-            <div class="release-date text-gray-400 text-sm">
-              {{ movie.release_date }}
-            </div>
+            <RouterLink :to="{name: 'movie', params: {movieId: movie.id}}">
+              <div>
+                <img
+                  class="slider-image rounded-md"
+                  :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`"
+                />
+              </div>
+              <div class="font-bold break-words">
+                {{ movie.original_title }}
+              </div>
+              <div class="release-date text-gray-400 text-sm">
+                {{ movie.release_date }}
+              </div>
+            </RouterLink>
           </div>
         </div>
       </div>
