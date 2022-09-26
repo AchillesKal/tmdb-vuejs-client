@@ -27,8 +27,6 @@ watch(
     styleObject.backgroundImage = backgroundImagePath.value;
   }
 );
-
-//
 </script>
 
 <template>
