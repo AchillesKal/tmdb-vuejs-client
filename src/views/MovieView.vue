@@ -3,6 +3,8 @@ import { useRoute } from 'vue-router';
 import { storeToRefs } from 'pinia';
 
 import { useMovieStore } from "../stores/movies";
+import MovieGenres from "../components/MovieGenres.vue";
+import { getMovieReleaseYearFromString, getHoursFromRuntime } from '@/services/movie';
 
 const route = useRoute();
 
@@ -21,13 +23,17 @@ store.fetchMovie(route.params.movieId as string);
                 <div class="image_content backdrop">
                     <img class="poster rounded-md lazyload lazyloaded" :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${currentMovie.poster_path}`" :data-src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${currentMovie.poster_path}`" :data-srcset="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/h32gl4a3QxQWNiNaR4Fc1uvLBkV.jpg 1x, https://image.tmdb.org/t/p/w600_and_h900_bestv2/h32gl4a3QxQWNiNaR4Fc1uvLBkV.jpg 2x`" alt="Pinocchio" :srcset="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${currentMovie.poster_path} 1x, https://image.tmdb.org/t/p/w600_and_h900_bestv2/${currentMovie.poster_path} 2x`" data-loaded="true">
                 </div>
-                <img 
-                    
-                    :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${currentMovie.poster_path}`"
-                />
+                <img :src="`https://image.tmdb.org/t/p/w300_and_h450_bestv2/${currentMovie.poster_path}`" />
             </div>
             <div class="pl-10">
-                <h1 class="text-3xl font-bold">{{currentMovie.original_title}}</h1>
+                <h1 class="text-3xl font-bold inline">{{currentMovie.original_title}}</h1><span>({{getMovieReleaseYearFromString(currentMovie.release_date)}})</span>
+                <div>
+                    {{ new Date(currentMovie.release_date).toLocaleDateString("en-US") }}
+                </div>
+                <MovieGenres :genres="currentMovie.genres" />
+                <div>
+                    {{ getHoursFromRuntime(currentMovie.runtime) }}
+                </div>
                 <div>
                     <h3 class="text-lg">
                         Overfiew
