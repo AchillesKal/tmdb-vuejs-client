@@ -1,7 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter, useRoute } from 'vue-router';
+
+const searchTerm = ref('');
+const router = useRouter();
+const route = useRoute();
+
+const onSearchFormSubmit = (e: Event) => {
+  e.preventDefault();
+  router.push(`/search/${searchTerm.value}`);
+};
+</script>
 
 <template>
-  <form class="search-form pt-5">
+  <form class="search-form pt-5" @submit="onSearchFormSubmit">
     <label
       for="default-search"
       class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300"
@@ -28,6 +40,7 @@
         </svg>
       </div>
       <input
+        v-model="searchTerm"
         type="search"
         id="default-search"
         class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
