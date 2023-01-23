@@ -8,7 +8,7 @@ import { RouterLink, RouterView } from "vue-router";
       <nav class="flex items-center justify-between flex-wrap p-4">
         <div class="flex items-center flex-shrink-0 text-white mr-6">
           <RouterLink to="/">
-            <span class="font-semibold text-xl tracking-tight"
+            <span class="font-semibold text-xl tracking-tight gradient-text"
               >TMDB VueJS Client</span
             >
           </RouterLink>
@@ -69,3 +69,26 @@ import { RouterLink, RouterView } from "vue-router";
     </div>
   </footer>
 </template>
+
+<style>
+.gradient-text{
+  background: linear-gradient(to right, crimson,pink,springgreen);
+  background-size: 200% 200%;
+  animation: rainbow 2s ease-in-out infinite;
+  background-clip: text;
+  -webkit-background-clip:text;
+  color: #FFF;
+  display:block;
+  text-align:center;
+  transition: color .2s ease-in-out;
+  font-weight:900;
+}
+.gradient-text:hover{
+  color:rgba(0,0,0,0);
+}
+@keyframes rainbow { 
+  0%{background-position:left}
+  50%{background-position:right}
+  100%{background-position:left}
+}
+</style>
