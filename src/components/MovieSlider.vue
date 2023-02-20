@@ -15,9 +15,9 @@ defineProps(["movieItems", "title"]);
             :key="index"
           >
             <RouterLink :to="{name: 'movie', params: {movieId: movie.id}}">
-              <div>
+              <div class="overflow-hidden rounded-md">
                 <img
-                  class="slider-image rounded-md"
+                  class="slider-image hover:scale-125 transform transition duration-500"
                   :src="`https://image.tmdb.org/t/p/w185${movie.poster_path}`"
                 />
               </div>
