@@ -4,7 +4,7 @@ import MovieSlider from "../components/MovieSlider.vue";
 
 import { onMounted, computed } from "vue";
 
-import { useMovieStore } from "../stores/movies";
+import { useMovieStore } from "@/stores/movies";
 
 const store = useMovieStore();
 

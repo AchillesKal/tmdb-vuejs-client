@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { Movie } from "@/models/Movie";
 import { ref, reactive, watch } from "vue";
 import MovieSearchForm from "../components/MovieSearchForm.vue";
 

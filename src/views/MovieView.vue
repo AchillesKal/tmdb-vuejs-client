@@ -2,7 +2,7 @@
 import { useRoute } from "vue-router";
 import { storeToRefs } from "pinia";
 
-import { useMovieStore } from "../stores/movies";
+import { useMovieStore } from "@/stores/movies";
 import MovieGenres from "../components/MovieGenres.vue";
 import {
   getMovieReleaseYearFromString,
@@ -20,7 +20,7 @@ store.fetchMovie(route.params.movieId as string);
 
 <template>
   <div class="container mx-auto"></div>
-  <div class="single-movie-wrapper bg-blue-700">
+  <div v-if="!loading" class="single-movie-wrapper bg-blue-700">
     <div class="container mx-auto p-8 flex">
       <div class="movie-poster">
         <div class="image_content backdrop">
@@ -61,6 +61,7 @@ store.fetchMovie(route.params.movieId as string);
       </div>
     </div>
   </div>
+  <div v-if="loading">Loading...</div>
 </template>
 
 <style>

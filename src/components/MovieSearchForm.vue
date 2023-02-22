@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 
-const searchTerm = ref('');
+const searchTerm = ref("");
 const router = useRouter();
-const route = useRoute();
 
 const onSearchFormSubmit = (e: Event) => {
   e.preventDefault();
