@@ -1,21 +1,26 @@
 <script setup lang="ts">
 import { useRoute } from "vue-router";
-import { storeToRefs } from "pinia";
-
-import { useMovieStore } from "@/stores/movies";
 import MovieGenres from "../components/MovieGenres.vue";
 import {
   getMovieReleaseYearFromString,
   getHoursFromRuntime,
 } from "@/services/movie";
+import { useQuery } from "@tanstack/vue-query";
 
 const route = useRoute();
+const movieId = route.params.movieId;
 
-const { currentMovie, loading } = storeToRefs(useMovieStore());
+const { data: currentMovie } = useQuery({
+  queryKey: ["movies", movieId],
+  queryFn: async () => {
+    const apiPath = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${
+      import.meta.env.VITE_APP_TMDB_API_KEY
+    }&language=en-US`;
 
-const store = useMovieStore();
-
-store.fetchMovie(route.params.movieId as string);
+    const res = await fetch(apiPath);
+    return await res.json();
+  },
+});
 </script>
 
 <template>
