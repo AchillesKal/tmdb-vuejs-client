@@ -2,30 +2,30 @@
 import HomeBanner from "../components/HomeBanner.vue";
 import MovieSlider from "../components/MovieSlider.vue";
 
-import { onMounted, computed } from "vue";
+import usePopularMovieQuery from "../composables/usePopularMovieQuery";
+import useTopRatedMovieQuery from "@/composables/useTopRatedMovieQuery";
 
-import { useMovieStore } from "@/stores/movies";
+const {
+  isLoading: popularIsLoading,
+  isError: popularIsError,
+  data: mostPopularMovies,
+  error: popularError,
+} = usePopularMovieQuery();
 
-const store = useMovieStore();
-
-const mostPopularMovies = computed(() => {
-  return store.mostPopularMovies;
-});
-const latestMovies = computed(() => {
-  return store.topRatedMovies;
-});
-
-onMounted(() => {
-  store.fetchMostPopularMovies();
-  store.fetchTopRatedMovies();
-});
+const {
+  isLoading: topRatedIsLoading,
+  isError: topRatedIsError,
+  data: topRatedMovies,
+  error: topRatedError,
+} = useTopRatedMovieQuery();
 </script>
 
 <template>
   <main>
     <HomeBanner :movieItems="mostPopularMovies" />
   </main>
+
   <MovieSlider :movieItems="mostPopularMovies" title="Popular" />
 
-  <MovieSlider :movieItems="latestMovies" title="Top Rated" />
+  <MovieSlider :movieItems="topRatedMovies" title="Top Rated" />
 </template>
